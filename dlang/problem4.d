@@ -1,6 +1,5 @@
 import std.stdio;
 import std.conv;
-import core.thread;
 
 
 void main(){
