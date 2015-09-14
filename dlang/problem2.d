@@ -1,11 +1,10 @@
 import std.stdio;
 
-int fib(int x=1, int y=1){
-    if(x >= 4000000) return 0;
-    if(x%2==0)	return x + fib(x+y, x);
-    else return fib(x+y, x);
-}
-
-void main(){
-    writeln(fib());
+void main()
+{
+  ulong total;
+  for (int x=1,y=1,z=0;x<4000000;z=x,x+=y,y=z) {
+    if(x % 2 == 0) total += x;
+  }
+  total.writeln;
 }
