@@ -1,14 +1,9 @@
 import std.stdio;
 import std.algorithm;
-
+import std.range;
 
 void main(){
-  int[] arr;
-
-  for (int i=1;i < 101; ++i) {
-    arr ~= i;
-  }
-  auto sum1 = reduce!"a + b"(arr);
-  auto sum2 = reduce!"a + b"(map!"a * a"(arr));
+  auto sum1 = iota(1, 101).reduce!((a, b) => a + b);
+  auto sum2 = iota(1, 101).map!((a) => a * a).reduce!((a, b) => a + b);
   writeln((sum1*sum1) - sum2);
 }
