@@ -5,7 +5,6 @@ void main()
   int total = 0;
   int frontOfMonth = 1;
 
-  // 0 is Sunday.
   int[] weekday = [0, 1, 2, 3, 4, 5, 6];
 
   foreach (year; 1900..2001) {
