@@ -1,17 +1,23 @@
 import std.stdio;
-import std.conv;
-
+import std.algorithm;
+import std.range;
+import std.conv : to;
 
 void main(){
-  int str = 0;
-  foreach_reverse(i; 100 .. 999){
-    foreach_reverse(j; 100 .. 999){
-	    string tmp = to!string(i * j);
-	    if (tmp == tmp.dup.reverse) {
-        auto x = to!int(tmp.dup);
-        if(str < x) str = x;
-	    }
+    int p = 0;
+    foreach_reverse (i; 100 .. 999)
+    {
+        foreach_reverse (j; 100 .. 999)
+        {
+            auto s = to!string(i * j);
+            if (iota(s.length / 2)
+                .all!(a => s[a] == s[s.length - a - 1]))
+            {
+                auto x = s.to!int;
+                if(p < x)
+                    p = x;
+            }
+        }
     }
-  }
-  writeln(str);
+    p.writeln;
 }
