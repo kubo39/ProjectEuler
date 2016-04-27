@@ -1,10 +1,11 @@
 import std.stdio;
+import std.algorithm;
+import std.range;
 
 void main()
 {
-  int count;
-  uint i;
-  for(i=1;i<1000;++i)
-    if(i % 3 == 0 || i % 5 == 0) count += i;
-  count.writeln;
+    iota(1, 1000)
+        .filter!(a => a % 3 == 0 || a % 5 == 0)
+        .reduce!((a, b) => a + b)
+        .writeln;
 }
