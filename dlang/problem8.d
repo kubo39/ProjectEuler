@@ -6,13 +6,14 @@ import std.range;
 
 void main()
 {
-  scope f = File("./problem8.txt");
-  char[] chars = f.byLine.map!chomp.join("");
+    auto f = File("./problem8.txt");
+    char[] chars = f.byLine.map!chomp.join("");
 
-  ulong x;
-  for (ulong i; (chars.length - i) > 12; ++i) {
-    ulong tmp = chars[i .. i+13].map!((a) => a.to!ulong - 48).reduce!((a, b) => a * b);
-    if (tmp > x) x = tmp;
-  }
-  x.writeln;
+    ulong x;
+    for (ulong i; (chars.length - i) > 12; ++i)
+    {
+        ulong tmp = chars[i .. i+13].map!(a => a.to!ulong - 48).reduce!((a, b) => a * b);
+        if (tmp > x) x = tmp;
+    }
+    x.writeln;
 }
